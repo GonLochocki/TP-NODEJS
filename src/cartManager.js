@@ -34,7 +34,7 @@ class CartManager {
   }
 
   async saveCarts(carts) {
-    await fs.promises.writeFile(CartManager.cartsPath, JSON.stringify(carts, null, 2));  
+    await fs.promises.writeFile(CartManager.cartsPath, JSON.stringify(carts));  
   }
 
   async addCart() {

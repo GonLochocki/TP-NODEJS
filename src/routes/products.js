@@ -51,7 +51,7 @@ router.post("/", async (req, res) => {
       code
     });
 
-    res.status(201).json(newProduct);
+    res.status(200).json(newProduct);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
