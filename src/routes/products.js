@@ -45,7 +45,7 @@ router.post("/", async (req, res) => {
       title,
       description,
       price,
-      status: true, // status por defecto en true
+      status: true, 
       stock,
       category,
       code

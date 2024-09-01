@@ -19,9 +19,9 @@ class CartManager {
         CartManager.id = 1;
       }
     } catch (error) {
-      CartManager.id = 1; // Si hay un error, se inicia en 1
+      CartManager.id = 1; 
     }
-    return CartManager.id;  // Devuelve siempre el valor del ID
+    return CartManager.id;  
   }
 
   async getCarts() {
@@ -34,15 +34,15 @@ class CartManager {
   }
 
   async saveCarts(carts) {
-    await fs.promises.writeFile(CartManager.cartsPath, JSON.stringify(carts, null, 2));  // Formatear el JSON para mayor legibilidad
+    await fs.promises.writeFile(CartManager.cartsPath, JSON.stringify(carts, null, 2));  
   }
 
   async addCart() {
     const carts = await this.getCarts();
-    const newCartId = await this.lastId();  // Espera correctamente el ID generado
+    const newCartId = await this.lastId(); 
 
     const newCart = {
-      id: newCartId || CartManager.id,  // Asegúrate de asignar el ID correctamente
+      id: newCartId || CartManager.id,  
       products: []
     };
 
