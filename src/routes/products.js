@@ -51,8 +51,9 @@ router.post("/", async (req, res) => {
       category,
       code
     });
+    
 
-    io.emit("newProduct", newProduct)
+    io.emit("updateProductList", newProduct)
 
     res.status(200).json(newProduct);
   } catch (error) {
