@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import ProductManager from '../productManager.js';
+import { io } from '../app.js';
 
 const productManager = new ProductManager();
 const router = Router();
@@ -51,9 +52,11 @@ router.post("/", async (req, res) => {
       code
     });
 
+    io.emit("newProduct", newProduct)
+
     res.status(200).json(newProduct);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ error: error.message});
   }
 });
 
@@ -79,6 +82,8 @@ router.delete("/:pid", async (req, res) => {
     const deleted = await productManager.deleteProduct(id);
 
     if (deleted) {
+
+      io.emit("removeProduct", id);
       res.json({ status: "success", deleted });
     } else {
       res.status(404).json({ message: "Product not found" });
