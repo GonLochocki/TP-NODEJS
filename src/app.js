@@ -30,9 +30,9 @@ const server = app.listen(PORT, () => {
 const io = new Server(server);
 
 io.on("connection", (socket) => {
-  socket.on("newProduct", (product) => {
-    console.log("Producto nuevo recibido:", product);
-    io.emit("updateProductList", product);
+  socket.on("newProduct", (newProduct) => {
+    console.log("Producto nuevo recibido:", newProduct);
+    io.emit("updateProductList", newProduct);
   });
 
   socket.on("deleteProduct", (productId) => {

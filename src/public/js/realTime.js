@@ -1,12 +1,12 @@
 const socket = io();
 
-socket.on("updateProductList", (product) => {
+socket.on("updateProductList", (newProduct) => {
  
   const productList = document.getElementById("product-list");
-  const newProduct = document.createElement("li");
-  newProduct.id = `product-${product.id}`;
-  newProduct.textContent = `${product.title} - $${product.price}`;
-  productList.appendChild(newProduct);
+  const nuevoProducto = document.createElement("li");
+  nuevoProducto.id = `product-${newProductroduct.id}`;
+  nuevoProducto.textContent = `${newProduct.title} - $${newProduct.price}`;
+  productList.appendChild(nuevoProducto);
 });
 
 socket.on("removeProduct", (productId) => {

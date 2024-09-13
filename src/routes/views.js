@@ -1,6 +1,6 @@
 import { Router } from "express";
 import ProductManager from "../productManager.js";
-import { io } from "../app.js";
+
 
 
 const router = Router();
@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
 router.get("/products", async (req, res) => {
   try {
     const products = await productManager.getProducts();
-    /* io.emit("updateProductList", products) */
+    
     res.render("realTimeProducts", { products });
   } catch (error) {
     res.status(500).json({ message: error.message });
